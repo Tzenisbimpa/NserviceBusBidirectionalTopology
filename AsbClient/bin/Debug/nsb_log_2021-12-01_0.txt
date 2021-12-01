@@ -1,0 +1,21 @@
+﻿2021-12-01 10:59:39.741 INFO  Logging to 'C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\AsbClient\bin\Debug\' with level Info
+2021-12-01 10:59:39.972 INFO  Auditing processed messages to 'audit'
+2021-12-01 10:59:40.014 INFO  Selected active license from C:\Users\Tzenis.Bimpa\AppData\Local\ParticularSoftware\license.xml
+License Expiration: 2022-02-03
+2021-12-01 10:59:48.735 INFO  Initiating shutdown.
+2021-12-01 10:59:48.798 INFO  Shutdown complete.
+2021-12-01 12:06:51.101 INFO  Logging to 'C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\AsbClient\bin\Debug\' with level Info
+2021-12-01 12:06:51.378 INFO  Auditing processed messages to 'audit'
+2021-12-01 12:06:51.414 INFO  Selected active license from C:\Users\Tzenis.Bimpa\AppData\Local\ParticularSoftware\license.xml
+License Expiration: 2022-02-03
+2021-12-01 12:07:08.528 INFO  Received message with Id: 363
+2021-12-01 12:07:58.515 INFO  Received message with Id: 180
+2021-12-01 12:08:43.585 INFO  Initiating shutdown.
+2021-12-01 12:08:43.636 INFO  Shutdown complete.
+2021-12-01 12:14:35.620 INFO  Logging to 'C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\AsbClient\bin\Debug\' with level Info
+2021-12-01 12:14:36.002 INFO  Auditing processed messages to 'audit'
+2021-12-01 12:14:36.046 INFO  Selected active license from C:\Users\Tzenis.Bimpa\AppData\Local\ParticularSoftware\license.xml
+License Expiration: 2022-02-03
+2021-12-01 12:15:02.634 INFO  Received message with Id: 173
+2021-12-01 12:15:23.109 INFO  Initiating shutdown.
+2021-12-01 12:15:23.167 INFO  Shutdown complete.

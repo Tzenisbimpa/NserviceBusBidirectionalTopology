@@ -1,0 +1,18 @@
+﻿2021-12-01 12:06:51.628 INFO  Logging to 'C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\Router\bin\Debug\' with level Info
+2021-12-01 12:08:26.089 INFO  Stopping receiver.
+2021-12-01 12:08:26.096 INFO  Stopping receiver.
+2021-12-01 12:08:26.128 INFO  Receiver stopped.
+2021-12-01 12:08:26.743 INFO  Receiver stopped.
+2021-12-01 12:08:26.748 INFO  Initiating shutdown.
+2021-12-01 12:08:26.750 INFO  Shutdown complete.
+2021-12-01 12:08:26.752 INFO  Initiating shutdown.
+2021-12-01 12:08:26.759 INFO  Shutdown complete.
+2021-12-01 12:14:35.470 INFO  Logging to 'C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\Router\bin\Debug\' with level Info
+2021-12-01 12:15:27.254 INFO  Stopping receiver.
+2021-12-01 12:15:27.261 INFO  Stopping receiver.
+2021-12-01 12:15:27.299 INFO  Receiver stopped.
+2021-12-01 12:15:27.443 INFO  Receiver stopped.
+2021-12-01 12:15:27.447 INFO  Initiating shutdown.
+2021-12-01 12:15:27.449 INFO  Shutdown complete.
+2021-12-01 12:15:27.450 INFO  Initiating shutdown.
+2021-12-01 12:15:27.457 INFO  Shutdown complete.

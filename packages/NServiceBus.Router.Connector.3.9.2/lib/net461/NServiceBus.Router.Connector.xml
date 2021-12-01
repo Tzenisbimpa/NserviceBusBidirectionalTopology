@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NServiceBus.Router.Connector</name>
+    </assembly>
+    <members>
+        <member name="T:NServiceBus.RouterConfigExtensions">
+            <summary>
+            Configures the router connection.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.RouterConfigExtensions.ConnectToRouter(NServiceBus.RoutingSettings,System.String)">
+            <summary>
+            Instructs the endpoint configuration to connect to a designated router. A single endpoint can connect to a single router.
+            </summary>
+            <param name="routingSettings">Routing settings.</param>
+            <param name="routerAddress">Transport address of router's interface.</param>
+        </member>
+        <member name="T:NServiceBus.RouterConnectionSettings">
+            <summary>
+            Configures the connection to the router.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.RouterConnectionSettings.DelegateRouting(System.Type)">
+            <summary>
+            Delegates routing of a given message type to the router.
+            </summary>
+            <param name="messageType">Message type.</param>
+        </member>
+        <member name="M:NServiceBus.RouterConnectionSettings.RouteToEndpoint(System.Type,System.String)">
+            <summary>
+            Instructs the endpoint to route messages of this type to a designated endpoint via the router.
+            </summary>
+            <param name="messageType">Message type.</param>
+            <param name="endpointName">Name of the destination endpoint.</param>
+        </member>
+        <member name="M:NServiceBus.RouterConnectionSettings.RegisterPublisher(System.Type,System.String)">
+            <summary>
+            Registers a designated endpoint as a publisher of the events of this type. The endpoint will be used as a destination of subscribe messages. The subscribe
+            message will be sent via the router.
+            </summary>
+            <param name="eventType">Type of the event.</param>
+            <param name="publisherEndpointName">Name of the publishing endpoint.</param>
+        </member>
+        <member name="T:NServiceBus.SendToSiteExtensions">
+            <summary>
+            Allows routing a given message to remote sites, similar to Gateway.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.SendToSiteExtensions.SendToSites(NServiceBus.SendOptions,System.String[])">
+            <summary>
+            Instructs NServiceBus to send a given message to remote site(s).
+            </summary>
+        </member>
+    </members>
+</doc>

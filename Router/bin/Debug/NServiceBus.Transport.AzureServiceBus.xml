@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NServiceBus.Transport.AzureServiceBus</name>
+    </assembly>
+    <members>
+        <member name="T:NServiceBus.AzureServiceBusTransport">
+            <summary>Transport definition for Azure Service Bus.</summary>
+        </member>
+        <member name="M:NServiceBus.AzureServiceBusTransport.Initialize(NServiceBus.Settings.SettingsHolder,System.String)">
+            <summary>
+            Initializes all the factories and supported features for the transport.
+            </summary>
+            <param name="settings">An instance of the current settings.</param>
+            <param name="connectionString">The connection string.</param>
+            <returns>The supported factories.</returns>
+        </member>
+        <member name="P:NServiceBus.AzureServiceBusTransport.ExampleConnectionStringForErrorMessage">
+            <summary>
+            Gets an example connection string to use when reporting the lack of a configured connection string to the user.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.AzureServiceBusTransportSettingsExtensions">
+            <summary>
+            Adds access to the Azure Service Bus transport config to the global Transport object.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.AzureServiceBusTransportSettingsExtensions.TopicName(NServiceBus.TransportExtensions{NServiceBus.AzureServiceBusTransport},System.String)">
+            <summary>
+            Overrides the default topic name used to publish events between endpoints.
+            </summary>
+            <param name="transportExtensions"></param>
+            <param name="topicName">The name of the topic used to publish events between endpoints.</param>
+        </member>
+        <member name="M:NServiceBus.AzureServiceBusTransportSettingsExtensions.EntityMaximumSize(NServiceBus.TransportExtensions{NServiceBus.AzureServiceBusTransport},System.Int32)">
+            <summary>
+            Overrides the default maximum size used when creating queues and topics.
+            </summary>
+            <param name="transportExtensions"></param>
+            <param name="maximumSizeInGB">The maximum size to use, in gigabytes.</param>
+        </member>
+        <member name="M:NServiceBus.AzureServiceBusTransportSettingsExtensions.EnablePartitioning(NServiceBus.TransportExtensions{NServiceBus.AzureServiceBusTransport})">
+            <summary>
+            Enables entity partitioning when creating queues and topics.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.AzureServiceBusTransportSettingsExtensions.PrefetchMultiplier(NServiceBus.TransportExtensions{NServiceBus.AzureServiceBusTransport},System.Int32)">
+            <summary>
+            Specifies the multiplier to apply to the maximum concurrency value to calculate the prefetch count.
+            </summary>
+            <param name="transportExtensions"></param>
+            <param name="prefetchMultiplier">The multiplier value to use in the prefetch calculation.</param>
+        </member>
+        <member name="M:NServiceBus.AzureServiceBusTransportSettingsExtensions.PrefetchCount(NServiceBus.TransportExtensions{NServiceBus.AzureServiceBusTransport},System.Int32)">
+            <summary>
+            Overrides the default prefetch count calculation with the specified value.
+            </summary>
+            <param name="transportExtensions"></param>
+            <param name="prefetchCount">The prefetch count to use.</param>
+        </member>
+        <member name="M:NServiceBus.AzureServiceBusTransportSettingsExtensions.TimeToWaitBeforeTriggeringCircuitBreaker(NServiceBus.TransportExtensions{NServiceBus.AzureServiceBusTransport},System.TimeSpan)">
+            <summary>
+            Overrides the default time to wait before triggering a circuit breaker that initiates the endpoint shutdown procedure when the message pump cannot successfully receive a message.
+            </summary>
+            <param name="transportExtensions"></param>
+            <param name="timeToWait">The time to wait before triggering the circuit breaker.</param>
+        </member>
+        <member name="M:NServiceBus.AzureServiceBusTransportSettingsExtensions.SubscriptionNameShortener(NServiceBus.TransportExtensions{NServiceBus.AzureServiceBusTransport},System.Func{System.String,System.String})">
+            <summary>
+            Specifies a callback to apply to the subscription name when the endpoint's name is longer than 50 characters.
+            </summary>
+            <param name="transportExtensions"></param>
+            <param name="subscriptionNameShortener">The callback to apply.</param>
+        </member>
+        <member name="M:NServiceBus.AzureServiceBusTransportSettingsExtensions.RuleNameShortener(NServiceBus.TransportExtensions{NServiceBus.AzureServiceBusTransport},System.Func{System.String,System.String})">
+            <summary>
+            Specifies a callback to apply to a subscription rule name when a subscribed event's name is longer than 50 characters.
+            </summary>
+            <param name="transportExtensions"></param>
+            <param name="ruleNameShortener">The callback to apply.</param>
+        </member>
+        <member name="M:NServiceBus.AzureServiceBusTransportSettingsExtensions.SubscriptionNamingConvention(NServiceBus.TransportExtensions{NServiceBus.AzureServiceBusTransport},System.Func{System.String,System.String})">
+            <summary>
+            Specifies a callback to customize subscription names.
+            </summary>
+            <param name="transportExtensions"></param>
+            <param name="subscriptionNamingConvention">The callback to apply.</param>
+        </member>
+        <member name="M:NServiceBus.AzureServiceBusTransportSettingsExtensions.SubscriptionRuleNamingConvention(NServiceBus.TransportExtensions{NServiceBus.AzureServiceBusTransport},System.Func{System.Type,System.String})">
+            <summary>
+            Specifies a callback to customize subscription rule names.
+            </summary>
+            <remarks>The naming convention callback is called for every subscribed event <see cref="T:System.Type"/>.</remarks>
+            <param name="transportExtensions"></param>
+            <param name="subscriptionRuleNamingConvention">The callback to apply.</param>
+        </member>
+        <member name="M:NServiceBus.AzureServiceBusTransportSettingsExtensions.UseWebSockets(NServiceBus.TransportExtensions{NServiceBus.AzureServiceBusTransport})">
+            <summary>
+            Configures the transport to use AMQP over WebSockets.
+            </summary>
+            <param name="transportExtensions"></param>
+        </member>
+        <member name="M:NServiceBus.AzureServiceBusTransportSettingsExtensions.CustomTokenCredential(NServiceBus.TransportExtensions{NServiceBus.AzureServiceBusTransport},Azure.Core.TokenCredential)">
+            <summary>
+            Overrides the default token credential with a custom one.
+            </summary>
+            <param name="transportExtensions"></param>
+            <param name="tokenCredential">The token credential to be used.</param>
+        </member>
+        <member name="M:NServiceBus.AzureServiceBusTransportSettingsExtensions.CustomRetryPolicy(NServiceBus.TransportExtensions{NServiceBus.AzureServiceBusTransport},Azure.Messaging.ServiceBus.ServiceBusRetryOptions)">
+            <summary>
+            Overrides the default retry policy with a custom implementation.
+            </summary>
+            <param name="transportExtensions"></param>
+            <param name="retryPolicy">A custom retry policy to be used.</param>
+        </member>
+        <member name="T:NServiceBus.CustomizeNativeMessageExtensions">
+            <summary>
+            Allows the users to customize outgoing native messages.
+            </summary>
+            <remarks>
+            The behavior of this class is exposed via extension methods.
+            </remarks>
+        </member>
+        <member name="M:NServiceBus.CustomizeNativeMessageExtensions.CustomizeNativeMessage(NServiceBus.Extensibility.ExtendableOptions,System.Action{Azure.Messaging.ServiceBus.ServiceBusMessage})">
+            <summary>
+            Allows customization of the outgoing native message sent using <see cref="T:NServiceBus.IMessageSession"/>.
+            </summary>
+            <param name="options">Option being extended.</param>
+            <param name="customization">Customization action.</param>
+        </member>
+        <member name="M:NServiceBus.CustomizeNativeMessageExtensions.CustomizeNativeMessage(NServiceBus.Extensibility.ExtendableOptions,NServiceBus.IPipelineContext,System.Action{Azure.Messaging.ServiceBus.ServiceBusMessage})">
+            <summary>
+            Allows customization of the outgoing native message.
+            </summary>
+            <remarks>
+            Messages can be sent using <see cref="T:NServiceBus.IPipelineContext"/> or any of its derived variants such as <see cref="T:NServiceBus.IMessageHandlerContext"/>.
+            </remarks>
+            <param name="options">Option being extended.</param>
+            <param name="context">Context used to dispatch messages in the message handler.</param>
+            <param name="customization">Customization action.</param>
+        </member>
+        <member name="T:NServiceBus.Testing.TestableCustomizeNativeMessageExtensions">
+            <summary>
+            Provides helper implementations for the native message customization for testing purposes.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Testing.TestableCustomizeNativeMessageExtensions.GetNativeMessageCustomization(NServiceBus.Extensibility.ExtendableOptions)">
+            <summary>
+            Gets the customization of the outgoing native message sent using <see cref="T:NServiceBus.SendOptions"/>, <see cref="T:NServiceBus.PublishOptions"/> or <see cref="T:NServiceBus.ReplyOptions"/>.
+            </summary>
+            <param name="options">Option being extended.</param>
+            <returns>The customization action or null.</returns>
+        </member>
+        <member name="M:NServiceBus.Testing.TestableCustomizeNativeMessageExtensions.GetNativeMessageCustomization(NServiceBus.Extensibility.ExtendableOptions,NServiceBus.IPipelineContext)">
+            <summary>
+            Gets the customization of the outgoing native message sent using <see cref="T:NServiceBus.SendOptions"/>, <see cref="T:NServiceBus.PublishOptions"/> or <see cref="T:NServiceBus.ReplyOptions"/>.
+            </summary>
+            <param name="options">Option being extended.</param>
+            <param name="context">Context used to dispatch messages in the message handler.</param>
+            <returns>The customization action or null.</returns>
+        </member>
+    </members>
+</doc>

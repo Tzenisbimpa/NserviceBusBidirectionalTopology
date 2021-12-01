@@ -1,0 +1,60 @@
+﻿2021-12-01 11:33:35.975 INFO  Logging to 'C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\MsmqClient\bin\Debug\' with level Info
+2021-12-01 11:33:36.369 INFO  Auditing processed messages to 'audit'
+2021-12-01 11:33:36.413 INFO  Selected active license from C:\Users\Tzenis.Bimpa\AppData\Local\ParticularSoftware\license.xml
+License Expiration: 2022-02-03
+2021-12-01 11:33:37.077 WARN  Queue [private$\MsmqClient] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 11:33:37.087 WARN  Queue [private$\MsmqClient] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 11:33:37.095 WARN  Queue [private$\MsmqClient.Timeouts] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 11:33:37.103 WARN  Queue [private$\MsmqClient.Timeouts] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 11:33:37.110 WARN  Queue [private$\MsmqClient.TimeoutsDispatcher] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 11:33:37.116 WARN  Queue [private$\MsmqClient.TimeoutsDispatcher] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 11:33:37.300 WARN  Queue [private$\audit] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 11:33:37.308 WARN  Queue [private$\audit] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 11:33:37.317 WARN  Queue [private$\NServiceBusRouter] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 11:33:37.329 WARN  Queue [private$\NServiceBusRouter] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 11:33:37.339 WARN  Queue [private$\error] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 11:33:37.346 WARN  Queue [private$\error] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 11:33:40.716 INFO  Initiating shutdown.
+2021-12-01 11:33:41.545 INFO  Shutdown complete.
+2021-12-01 12:06:51.278 INFO  Logging to 'C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\MsmqClient\bin\Debug\' with level Info
+2021-12-01 12:06:52.613 INFO  Auditing processed messages to 'audit'
+2021-12-01 12:06:52.668 INFO  Selected active license from C:\Users\Tzenis.Bimpa\AppData\Local\ParticularSoftware\license.xml
+License Expiration: 2022-02-03
+2021-12-01 12:06:52.923 WARN  Queue [private$\MsmqClient] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:06:52.929 WARN  Queue [private$\MsmqClient] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:06:52.937 WARN  Queue [private$\MsmqClient.Timeouts] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:06:52.944 WARN  Queue [private$\MsmqClient.Timeouts] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:06:52.966 WARN  Queue [private$\MsmqClient.TimeoutsDispatcher] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:06:52.972 WARN  Queue [private$\MsmqClient.TimeoutsDispatcher] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:06:53.139 WARN  Queue [private$\audit] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:06:53.147 WARN  Queue [private$\audit] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:06:53.174 WARN  Queue [private$\NServiceBusRouter] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:06:53.189 WARN  Queue [private$\NServiceBusRouter] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:06:53.203 WARN  Queue [private$\error] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:06:53.212 WARN  Queue [private$\error] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:07:09.076 INFO  Received a reply from Asb with Id: 363
+2021-12-01 12:07:09.076 INFO  An event was published from Asb with Id: 363
+2021-12-01 12:07:59.309 INFO  Received a reply from Asb with Id: 180
+2021-12-01 12:07:59.359 INFO  An event was published from Asb with Id: 180
+2021-12-01 12:08:17.807 INFO  Initiating shutdown.
+2021-12-01 12:08:18.582 INFO  Shutdown complete.
+2021-12-01 12:14:35.606 INFO  Logging to 'C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\MsmqClient\bin\Debug\' with level Info
+2021-12-01 12:14:37.028 INFO  Auditing processed messages to 'audit'
+2021-12-01 12:14:37.066 INFO  Selected active license from C:\Users\Tzenis.Bimpa\AppData\Local\ParticularSoftware\license.xml
+License Expiration: 2022-02-03
+2021-12-01 12:14:37.652 WARN  Queue [private$\MsmqClient] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:14:37.657 WARN  Queue [private$\MsmqClient] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:14:37.663 WARN  Queue [private$\MsmqClient.Timeouts] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:14:37.668 WARN  Queue [private$\MsmqClient.Timeouts] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:14:37.675 WARN  Queue [private$\MsmqClient.TimeoutsDispatcher] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:14:37.680 WARN  Queue [private$\MsmqClient.TimeoutsDispatcher] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:14:37.769 WARN  Queue [private$\audit] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:14:37.774 WARN  Queue [private$\audit] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:14:37.780 WARN  Queue [private$\NServiceBusRouter] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:14:37.786 WARN  Queue [private$\NServiceBusRouter] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:14:37.794 WARN  Queue [private$\error] is running with [Everyone] with AccessRights set to [GenericWrite]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:14:37.800 WARN  Queue [private$\error] is running with [NT AUTHORITY\ANONYMOUS LOGON] with AccessRights set to [WriteMessage]. Consider setting appropriate permissions, if required by the organization. For more information, consult the documentation.
+2021-12-01 12:15:03.105 INFO  Received a reply from Asb with Id: 173
+2021-12-01 12:15:12.933 INFO  An event was published from Asb with Id: 173
+2021-12-01 12:15:31.882 INFO  Initiating shutdown.
+2021-12-01 12:15:32.428 INFO  Shutdown complete.

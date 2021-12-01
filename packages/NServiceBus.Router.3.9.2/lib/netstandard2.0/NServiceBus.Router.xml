@@ -1,0 +1,1477 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NServiceBus.Router</name>
+    </assembly>
+    <members>
+        <member name="T:NServiceBus.Router.Destination">
+            <summary>
+            Route table destination
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.Destination.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new destination.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.Destination.Endpoint">
+            <summary>
+            Name of the destination endpoint.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.Destination.Site">
+            <summary>
+            Optional name of the destination site.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.Destination.ToString">
+            <summary>Returns a string that represents the current object.</summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="T:NServiceBus.Router.RawDistributionPolicy">
+            <summary>
+            Allows configuring distribution strategies for endpoints.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.RawDistributionPolicy.SetDistributionStrategy(NServiceBus.Router.RawDistributionStrategy)">
+            <summary>Sets the distribution strategy for a given endpoint.</summary>
+            <param name="distributionStrategy">Distribution strategy to be used.</param>
+        </member>
+        <member name="T:NServiceBus.Router.RawDistributionStrategy">
+            <summary>
+            Determines which instance of a given endpoint a message is to be sent.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.RawDistributionStrategy.#ctor(System.String,NServiceBus.DistributionStrategyScope)">
+            <summary>
+            Creates a new <see cref="T:NServiceBus.Router.RawDistributionStrategy"/>.
+            </summary>
+            <param name="endpoint">The name of the endpoint this distribution strategy resolves instances for.</param>
+            <param name="scope">The scope for this strategy.</param>
+        </member>
+        <member name="M:NServiceBus.Router.RawDistributionStrategy.SelectDestination(System.String[])">
+            <summary>
+            Selects a destination instance for a message from all known addresses of a logical endpoint.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.RawDistributionStrategy.Endpoint">
+            <summary>
+            The name of the endpoint this distribution strategy resolves instances for.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.RawDistributionStrategy.Scope">
+            <summary>
+            The scope of this strategy.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.SingleInstanceRoundRobinRawDistributionStrategy">
+            <summary>
+            A default distribution strategy that sends messages to multiple instances of a destination endpoint in a round-robin manner.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SingleInstanceRoundRobinRawDistributionStrategy.#ctor(System.String,NServiceBus.DistributionStrategyScope)">
+            <summary>
+            Creates a new <see cref="T:NServiceBus.Routing.SingleInstanceRoundRobinDistributionStrategy" /> instance.
+            </summary>
+            <param name="endpoint">The name of the endpoint this distribution strategy resolves instances for.</param>
+            <param name="scope">The scope for this strategy.</param>
+        </member>
+        <member name="M:NServiceBus.Router.SingleInstanceRoundRobinRawDistributionStrategy.SelectDestination(System.String[])">
+            <summary>
+            Selects a destination instance for a message from all known addresses of a logical endpoint.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.Hosting.HostBuilderExtensions">
+            <summary>
+            HostBuilder extensions
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.Hosting.HostBuilderExtensions.UseNServiceBusRouter(Microsoft.Extensions.Hosting.IHostBuilder,System.Func{Microsoft.Extensions.Hosting.HostBuilderContext,NServiceBus.Router.RouterConfiguration})">
+            <summary>
+            Configures the host to start an NServiceBusRouter.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.Hosting.NServiceBusRouterHostedService">
+            <summary>
+            IHostedService for NServiceBusRouter
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.Hosting.NServiceBusRouterHostedService.#ctor(NServiceBus.Router.IRouter)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="router"></param>
+        </member>
+        <member name="M:NServiceBus.Router.Hosting.NServiceBusRouterHostedService.StartAsync(System.Threading.CancellationToken)">
+            <summary>
+            StartAsync
+            </summary>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:NServiceBus.Router.Hosting.NServiceBusRouterHostedService.StopAsync(System.Threading.CancellationToken)">
+            <summary>
+            StopAsync
+            </summary>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="T:NServiceBus.Router.IFeature">
+            <summary>
+            Represents a feature.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.IFeature.Configure(NServiceBus.Router.RouterConfiguration)">
+            <summary>
+            Configures the router for this feature.
+            </summary>
+            <param name="routerConfig"></param>
+        </member>
+        <member name="T:NServiceBus.Router.IModule">
+            <summary>
+            Represents extension of the router.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.IModule.Start(NServiceBus.Router.RootContext,NServiceBus.Router.SettingsHolder)">
+            <summary>
+            Starts the module.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.IModule.Stop">
+            <summary>
+            Stops the module.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:NServiceBus.Router.InterfaceConfiguration`1">
+            <summary>
+            Configures the switch port.
+            </summary>
+            <typeparam name="T">Type of transport.</typeparam>
+        </member>
+        <member name="P:NServiceBus.Router.InterfaceConfiguration`1.Settings">
+            <summary>
+            Interface's extensibility settings.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.InterfaceConfiguration`1.Name">
+            <summary>
+            Name of the interface.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.InterfaceConfiguration`1.RouterConfiguration">
+            <summary>
+            Router's configuration.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.InterfaceConfiguration`1.AddRule``1(System.Func{NServiceBus.Router.IRuleCreationContext,``0},System.Func{NServiceBus.Router.IRuleCreationContext,System.Boolean})">
+            <summary>
+            Adds routing rule that applies only to this interface.
+            </summary>
+            <typeparam name="TRule">Type of the rule.</typeparam>
+            <param name="constructor">Delegate that constructs a new instance of the rule.</param>
+            <param name="condition">Condition which must be true for the rule to be added to the chain.</param>
+        </member>
+        <member name="M:NServiceBus.Router.InterfaceConfiguration`1.UseSubscriptionPersistence(NServiceBus.Unicast.Subscriptions.MessageDrivenSubscriptions.ISubscriptionStorage)">
+            <summary>
+            Configures the port to use specified subscription persistence.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.InterfaceConfiguration`1.AutoCreateQueues(System.String)">
+            <summary>
+            Configures the port to automatically create a queue when starting up. Overrides switch-level setting.
+            </summary>
+            <param name="identity">Identity to use when creating the queue.</param>
+        </member>
+        <member name="M:NServiceBus.Router.InterfaceConfiguration`1.OverrideEndpointName(System.String)">
+            <summary>
+            Overrides the interface endpoint name.
+            </summary>
+            <param name="interfaceEndpointName">Endpoint name to use for this interface instead of Router's name</param>
+        </member>
+        <member name="M:NServiceBus.Router.InterfaceConfiguration`1.LimitMessageProcessingConcurrencyTo(System.Int32)">
+            <summary>
+            Limits the processing concurrency of the port to a given value.
+            </summary>
+            <param name="maximumConcurrency">Maximum level of concurrency for the port's transport.</param>
+        </member>
+        <member name="P:NServiceBus.Router.InterfaceConfiguration`1.DistributionPolicy">
+            <summary>
+            Distribution policy of the port.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.InterfaceConfiguration`1.EndpointInstances">
+            <summary>
+            Physical routing settings of the port.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.IReceivedMessageHeaders">
+            <summary>
+            Represents a set of headers associated with a received message.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.IReceivedMessageHeaders.Copy">
+            <summary>
+            Returns a copy of the header set.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.IRouter">
+            <summary>
+            An instance of a router
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.IRouter.Initialize">
+            <summary>
+            Initializes the router.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NServiceBus.Router.IRouter.Start">
+            <summary>
+            Initializes and starts the router.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.IRouter.Stop">
+            <summary>
+            Stops the router.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.IRoutingProtocol">
+            <summary>
+            Encapsulates a protocol for building the routing table.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.IRoutingProtocol.Start(NServiceBus.Router.RouterMetadata)">
+            <summary>
+            Starts the protocol.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NServiceBus.Router.IRoutingProtocol.Stop">
+            <summary>
+            Stops the protocol.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.IRoutingProtocol.RouteTable">
+            <summary>
+            Gets the current route table.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.IRuleCreationContext">
+            <summary>
+            Defines the context for creating instances of rules and determining if a given rule should be attached to a chain.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.IRuleCreationContext.InterfaceName">
+            <summary>
+            Name of the interface.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.IRuleCreationContext.EndpointInstances">
+            <summary>
+            The endpoint instance collection for a given interface.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.IRuleCreationContext.DistributionPolicy">
+            <summary>
+            The distribution policy configured for a given interface..
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.IRuleCreationContext.Endpoint">
+            <summary>
+            The endpoint associated with a given interface.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.IRuleCreationContext.TypeGenerator">
+            <summary>
+            The type generator used to create type objects from message type strings.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.IRuleCreationContext.Settings">
+            <summary>
+            Settings for the interface merged with router-wide settings.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.MessageDrivenSubscriptionExtensions">
+            <summary>
+            Configures message-driven pub/sub
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.MessageDrivenSubscriptionExtensions.EnableMessageDrivenPublishSubscribe``1(NServiceBus.Router.InterfaceConfiguration{``0},NServiceBus.Unicast.Subscriptions.MessageDrivenSubscriptions.ISubscriptionStorage)">
+            <summary>
+            Enables message-driven storage-based publish/subscribe for a given interface
+            </summary>
+            <param name="interfaceConfig">Interface configuration.</param>
+            <param name="subscriptionStorage">Subscription storage.</param>
+        </member>
+        <member name="M:NServiceBus.Router.MessageDrivenSubscriptionExtensions.DisableMessageDrivenPublishSubscribe``1(NServiceBus.Router.InterfaceConfiguration{``0})">
+            <summary>
+            Disables message-driven storage-based publish/subscribe for a given interface. 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="interfaceConfig"></param>
+        </member>
+        <member name="M:NServiceBus.Router.MessageDrivenSubscriptionExtensions.EnableMessageDrivenPublishSubscribe``1(NServiceBus.Router.SendOnlyInterfaceConfiguration{``0},NServiceBus.Unicast.Subscriptions.MessageDrivenSubscriptions.ISubscriptionStorage)">
+            <summary>
+            Enables message-driven storage-based publish/subscribe for a given send-only interface.
+            </summary>
+            <param name="interfaceConfig">Send-only interface configuration.</param>
+            <param name="subscriptionStorage">Subscription storage.</param>
+        </member>
+        <member name="M:NServiceBus.Router.MessageDrivenSubscriptionExtensions.DisableMessageDrivenPublishSubscribe``1(NServiceBus.Router.SendOnlyInterfaceConfiguration{``0})">
+            <summary>
+            Disables message-driven storage-based publish/subscribe for a given send-only interface.
+            </summary>
+            <param name="interfaceConfig">Send-only interface configuration.</param>
+        </member>
+        <member name="T:NServiceBus.Router.NativeSubscriptionExtensions">
+            <summary>
+            Configures native pub/sub
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.NativeSubscriptionExtensions.DisableNativePubSub``1(NServiceBus.Router.InterfaceConfiguration{``0})">
+            <summary>
+            Disables native publish/subscribe handling for a given interface.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.NativeSubscriptionExtensions.DisableNativePubSub``1(NServiceBus.Router.SendOnlyInterfaceConfiguration{``0})">
+            <summary>
+            Disables native publish/subscribe handling for a given send-only interface.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.ChainBuilder">
+            <summary>
+            Builds rule chains.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.ChainBuilder.Begin``1">
+            <summary>
+            Begins building a new rule chain.
+            </summary>
+            <typeparam name="T">Input type.</typeparam>
+        </member>
+        <member name="T:NServiceBus.Router.ChainBuilder`2">
+            <summary>
+            Builds rule chains.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.ChainBuilder`2.AddSection``1">
+            <summary>
+            Adds a secrion to the rule chain.
+            </summary>
+            <typeparam name="TNext">Section type.</typeparam>
+        </member>
+        <member name="M:NServiceBus.Router.ChainBuilder`2.Terminate">
+            <summary>
+            Finishes the creation of a rule chain.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.ChainTerminator`1">
+            <summary>
+            Marks end of a rule chain.
+            </summary>
+            <typeparam name="T">The rule context type to terminate.</typeparam>
+        </member>
+        <member name="M:NServiceBus.Router.ChainTerminator`1.Terminate(`0)">
+            <summary>
+            This method will be the final one to be called before the chain starts to traverse back up the "stack".
+            </summary>
+            <param name="context">The current context.</param>
+        </member>
+        <member name="M:NServiceBus.Router.ChainTerminator`1.Invoke(`0,System.Func{NServiceBus.Router.ChainTerminator{`0}.ITerminatingContext,System.Threading.Tasks.Task})">
+            <summary>
+            Invokes the terminate method.
+            </summary>
+            <param name="context">Context object.</param>
+            <param name="next">Ignored since there by definition is no next rule to call.</param>
+        </member>
+        <member name="T:NServiceBus.Router.ChainTerminator`1.ITerminatingContext">
+            <summary>
+            A well-known context that terminates the pipeline.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.ForwardPublishContext">
+            <summary>
+            Defines the context for the forward publish chain.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.ForwardPublishContext.#ctor(System.String,System.Type,NServiceBus.Router.PublishPreroutingContext)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardPublishContext.Types">
+            <summary>
+            Event types associated with the message being forwarded.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardPublishContext.RootEventType">
+            <summary>
+            Root event type.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardPublishContext.ReceivedHeaders">
+            <summary>
+            The headers associated with the received message.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardPublishContext.ReceivedBody">
+            <summary>
+            The headers associated with the received message.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.ForwardPublishContext.MarkForwarded">
+            <summary>
+            Mark this message as forwarded.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NServiceBus.Router.ForwardPublishContext.DoNotRequireThisMessageToBeForwarded">
+            <summary>
+            Marks this message as OK to be dropped if no chain terminator forwards it.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.ForwardReplyContext">
+            <summary>
+            Defines the context for the forward reply chain.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.ForwardReplyContext.#ctor(System.String,NServiceBus.Router.ReplyPreroutingContext)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardReplyContext.ReceivedHeaders">
+            <summary>
+            The headers associated with the received message.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardReplyContext.ReceivedBody">
+            <summary>
+            The headers associated with the received message.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.ForwardSendContext">
+            <summary>
+            Defines the context for the forward send chain.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.ForwardSendContext.#ctor(System.String,NServiceBus.Router.Route[],NServiceBus.Router.SendPreroutingContext)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardSendContext.Routes">
+            <summary>
+            The routes calculated for the message.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardSendContext.ReceivedHeaders">
+            <summary>
+            The headers associated with the received message.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardSendContext.ReceivedBody">
+            <summary>
+            The headers associated with the received message.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.ForwardSubscribeContext">
+            <summary>
+            Defines the context for the forward subscribe chain.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardSubscribeContext.Routes">
+            <summary>
+            Routes calculated for the message.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardSubscribeContext.MessageType">
+            <summary>
+            Type of the event to subscribe.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardSubscribeContext.SubscriberEndpoint">
+            <summary>
+            The logical name of the endpoint which sent the subscribe request.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardSubscribeContext.SubscriberAddress">
+            <summary>
+            The physical address of the endpoint which sent the unsubscribe request.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardSubscribeContext.MessageRuntimeType">
+            <summary>
+            Instance of event type to subscribe.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.ForwardSubscribeContext.#ctor(System.String,NServiceBus.Router.Route[],System.Type,System.String,System.String,NServiceBus.Router.SubscribePreroutingContext)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.ForwardUnsubscribeContext">
+            <summary>
+            Defines the context for the forward unsubscribe chain.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardUnsubscribeContext.Routes">
+            <summary>
+            Routes calculated for the message.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardUnsubscribeContext.MessageType">
+            <summary>
+            Type of the event to unsubscribe.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ForwardUnsubscribeContext.MessageRuntimeType">
+            <summary>
+            Instance of event type to subscribe.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.ForwardUnsubscribeContext.#ctor(System.String,NServiceBus.Router.Route[],System.Type,NServiceBus.Router.UnsubscribePreroutingContext)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.BaseForwardRuleContext">
+            <summary>
+            The base context class for all forwarding group chains.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.BaseForwardRuleContext.OutgoingInterface">
+            <summary>
+            The outgoing interface calculated by the routing table.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.BaseForwardRuleContext.IncomingInterface">
+            <summary>
+            The interface on which the message has been received.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.BaseForwardRuleContext.MessageId">
+            <summary>
+            The ID of the received message.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.BaseForwardRuleContext.ForwardedHeaders">
+            <summary>
+            Headers for the forwarded message.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.BaseForwardRuleContext.#ctor(System.String,NServiceBus.Router.BasePreroutingContext)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.IChain`1">
+            <summary>
+            Represents a single routing chain of a given type <typeparamref name="T"/> associated with a single interface.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.IChain`1.Invoke(`0)">
+            <summary>
+            Begins execution of the chain.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.IChains">
+            <summary>
+            Allows accessing all chains associated with a given interface.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.IChains.Get``1">
+            <summary>
+            Returns a chain for a given rule context type <typeparamref name="T"/>.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.IInterfaceChains">
+            <summary>
+            Allows accessing chains for a given interface.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.IInterfaceChains.GetChainsFor(System.String)">
+            <summary>
+            Returns a chains collection associated with interface <paramref name="interface"/>
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.IRule`2">
+            <summary>
+            Represents a routing rule.
+            </summary>
+            <typeparam name="TInChain">Input context type.</typeparam>
+            <typeparam name="TOutChain">Output context type.</typeparam>
+        </member>
+        <member name="M:NServiceBus.Router.IRule`2.Invoke(`0,System.Func{`1,System.Threading.Tasks.Task})">
+            <summary>
+            Executes the rule.
+            </summary>
+            <param name="context">Rule execution context.</param>
+            <param name="next">Delegate to invoke the rest of the chain that this rule belongs to.</param>
+        </member>
+        <member name="T:NServiceBus.Router.IRule">
+            <summary>
+            Marker interface for a routing rule
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.IRuleContext">
+            <summary>
+            Defines the context for the routing rule.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.IRuleContext.Extensions">
+            <summary>
+            Allows extending the rule context by adding arbitrary values.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.AnycastContext">
+            <summary>
+            Defines the context for the of the anycast chain that leads to the postrouting chain.
+            The purpose of the multicast chain is to send messages to a single instance of a given logical endpoint.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.AnycastContext.DestinationEndpoint">
+            <summary>
+            Logical name of the destination endpoint. The message will be sent to a single instance of that endpoint based
+            on the endpoint instance mapping and the distribution strategy.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.AnycastContext.Message">
+            <summary>
+            The message to be sent.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.AnycastContext.DistributionScope">
+            <summary>
+            The distribution scope to use when determining the physical destination address.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.AnycastContext.#ctor(System.String,NServiceBus.Transport.OutgoingMessage,NServiceBus.DistributionStrategyScope,NServiceBus.Router.RuleContext)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.MulticastContext">
+            <summary>
+            Defines the context for the of the multicast chain that leads to the postrouting chain.
+            The purpose of the multicast chain is to send messages to all instances of a given logical endpoint.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.MulticastContext.DestinationEndpoint">
+            <summary>
+            Logical name of the destination endpoint. The message will be sent to a single instance of that endpoint based
+            on the endpoint instance mapping and the distribution strategy.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.MulticastContext.Message">
+            <summary>
+            The message to be sent.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.MulticastContext.#ctor(System.String,NServiceBus.Transport.OutgoingMessage,NServiceBus.Router.BaseForwardRuleContext)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.PostroutingContext">
+            <summary>
+            Defines the context for the postrouting chain which purpose is to send out messages.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.PostroutingContext.Messages">
+            <summary>
+            A collection of transport operations to dispatch. Each operation includes the message and its physical destination address.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.PostroutingContext.DestinationEndpoint">
+            <summary>
+            Optional name of logical destination endpoint.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.PostroutingContext.#ctor(System.String,NServiceBus.Transport.TransportOperation,System.String,NServiceBus.Router.RootContext)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.PostroutingContext.#ctor(System.String,NServiceBus.Transport.TransportOperation,NServiceBus.Router.RuleContext)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.PostroutingContext.#ctor(System.String,NServiceBus.Transport.TransportOperation[],NServiceBus.Router.RuleContext)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.RawContext">
+            <summary>
+            Defines the context for the first part of the prerouting chain group -- the raw chain.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.RawContext.Body">
+            <summary>
+            The body of the received message.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.PreroutingContext">
+            <summary>
+            Defines the context for the second part of the prerouting chain group -- the common prerouting chain.
+            This chain is common to messages of all intents. It contains rules that detect
+            messages of specific intents and fork to per-intent prerouting chains.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.PreroutingContext.Intent">
+            <summary>
+            Received message intent or null if message intent header was missing.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.PreroutingContext.Body">
+            <summary>
+            The body of the received message.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.PreroutingContext.MarkForwarded">
+            <summary>
+            Mark this message as forwarded.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NServiceBus.Router.PreroutingContext.DoNotRequireThisMessageToBeForwarded">
+            <summary>
+            Marks this message as OK to be dropped if no chain terminator forwards it.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.PublishPreroutingContext">
+            <summary>
+            Defines the context for the third part of the prerouting chain group -- the prerouting chain for publish messages.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.PublishPreroutingContext.#ctor(System.String[],NServiceBus.Router.PreroutingContext)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.PublishPreroutingContext.Types">
+            <summary>
+            Event types associated with the message being forwarded.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.PublishPreroutingContext.Body">
+            <summary>
+            The body of the received message.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.ReplyPreroutingContext">
+            <summary>
+            Defines the context for the third part of the prerouting chain group -- the prerouting chain for reply messages.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.ReplyPreroutingContext.#ctor(NServiceBus.Router.PreroutingContext)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.ReplyPreroutingContext.Body">
+            <summary>
+            The body of the received message.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.SendPreroutingContext">
+            <summary>
+            Defines the context for the third part of the prerouting chain group -- the prerouting chain for send messages.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SendPreroutingContext.#ctor(NServiceBus.Router.PreroutingContext)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.SendPreroutingContext.Destinations">
+            <summary>
+            The destinations for the received message. Rules in this chain are supposed to add destinations based on the
+            headers or content of the received message. In order for the message to be forwarded it has to be assigned at
+            least one destination.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.SendPreroutingContext.Body">
+            <summary>
+            The body of the received message.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.SubscribePreroutingContext">
+            <summary>
+            Defines the context for the third part of the prerouting chain group -- the prerouting chain for subscribe messages.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.SubscribePreroutingContext.MessageType">
+            <summary>
+            Type of event to subscribe.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.SubscribePreroutingContext.SubscriberEndpoint">
+            <summary>
+            The logical name of the endpoint which sent the subscribe request.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.SubscribePreroutingContext.SubscriberAddress">
+            <summary>
+            The physical address of the endpoint which sent the unsubscribe request.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SubscribePreroutingContext.#ctor(NServiceBus.Router.PreroutingContext,System.String,System.String,System.String)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.SubscribePreroutingContext.Destinations">
+            <summary>
+            The destinations for the received message. Rules in this chain are supposed to add destinations based on the
+            headers or content of the received message. In order for the message to be forwarded it has to be assigned at
+            least one destination.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.UnsubscribePreroutingContext">
+            <summary>
+            Defines the context for the third part of the prerouting chain group -- the prerouting chain for unsubscribe messages.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.UnsubscribePreroutingContext.MessageType">
+            <summary>
+            Type of event to unsubscribe.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.UnsubscribePreroutingContext.SubscriberEndpoint">
+            <summary>
+            The logical name of the endpoint which sent the unsubscribe request.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.UnsubscribePreroutingContext.SubscriberAddress">
+            <summary>
+            The physical address of the endpoint which sent the unsubscribe request.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.UnsubscribePreroutingContext.#ctor(NServiceBus.Router.PreroutingContext,System.String,System.String,System.String)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.UnsubscribePreroutingContext.Destinations">
+            <summary>
+            The destinations for the received message. Rules in this chain are supposed to add destinations based on the
+            headers or content of the received message. In order for the message to be forwarded it has to be assigned at
+            least one destination.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.BasePreroutingContext">
+            <summary>
+            The base context class for all prerouting group chains.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.BasePreroutingContext.#ctor(NServiceBus.Router.BasePreroutingContext)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.BasePreroutingContext.Headers">
+            <summary>
+            The headers associated with the received message.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.BasePreroutingContext.IncomingInterface">
+            <summary>
+            The interface on which the message has been received.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.BasePreroutingContext.MessageId">
+            <summary>
+            The ID of the received message.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.RootContext">
+            <summary>
+            Root context for the router.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.RootContext.RouterName">
+            <summary>
+            The logical name of the router
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.RootContext.Interfaces">
+            <summary>
+            Router's interfaces.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.RootContext.Extensions">
+            <summary>
+            Allows extending the rule context by adding arbitrary values.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.RuleContext">
+            <summary>
+            Base class for all rule contexts.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.RuleContext.#ctor(NServiceBus.Router.RuleContext,System.String)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.RuleContext.#ctor(NServiceBus.Router.RootContext,System.String)">
+            <summary>
+            Creates new instance.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.RuleContext.Interface">
+            <summary>
+            Interface to which the chain that contains this rule belongs.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.RuleContext.Chains">
+            <summary>
+            The collection of all chains associated with the interface which contains this chain.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.RuleContext.Extensions">
+            <summary>
+            Allows extending the rule context by adding arbitrary values.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.ProcessCurrentMessageLaterException">
+            <summary>
+            An exception that informs the recoverability policy to not bump the failure counters preventing the message from eventually moving to the poison queue.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.ProcessCurrentMessageLaterException.#ctor(System.String)">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.Route">
+            <summary>
+            Represents a route for a message.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.Route.#ctor(System.String,System.String)">
+            <summary>
+            Creates new instance.
+            </summary>
+            <param name="destination">The logical name of the immediate destination.</param>
+            <param name="gateway">The gateway through which to send the message.</param>
+        </member>
+        <member name="P:NServiceBus.Router.Route.Gateway">
+            <summary>
+            The gateway through which to send the message.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.Route.Destination">
+            <summary>
+            The logical name of the immediate destination.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.Router">
+            <summary>
+            Allows creating routers.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.Router.Create(NServiceBus.Router.RouterConfiguration)">
+            <summary>
+            Creates a new instance of a router based on the provided configuration.
+            </summary>
+            <param name="config">Router configuration.</param>
+        </member>
+        <member name="T:NServiceBus.Router.RouterConfiguration">
+            <summary>
+            Constructs the router.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.RouterConfiguration.Name">
+            <summary>
+            Router endpoint name.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.RouterConfiguration.Settings">
+            <summary>
+            Router's extensibility settings.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.RouterConfiguration.#ctor(System.String)">
+            <summary>
+            Creates new router configuration with provided endpoint name.
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:NServiceBus.Router.RouterConfiguration.AddInterface``1(System.String,System.Action{NServiceBus.TransportExtensions{``0}})">
+            <summary>
+            Adds a new interface to the router.
+            </summary>
+            <typeparam name="T">Transport to use for this interface.</typeparam>
+            <param name="name">Name of the interface.</param>
+            <param name="customization">A callback for customizing the transport settings.</param>
+        </member>
+        <member name="M:NServiceBus.Router.RouterConfiguration.AddSendOnlyInterface``1(System.String,System.Action{NServiceBus.TransportExtensions{``0}})">
+            <summary>
+            Adds a new send-only interface to the router.
+            </summary>
+            <typeparam name="T">Transport to use for this interface.</typeparam>
+            <param name="name">Name of the interface.</param>
+            <param name="customization">A callback for customizing the transport settings.</param>
+        </member>
+        <member name="M:NServiceBus.Router.RouterConfiguration.AutoCreateQueues(System.String)">
+            <summary>
+            Configures the router to automatically create a queue when starting up.
+            </summary>
+            <param name="identity">Identity to use when creating the queue.</param>
+        </member>
+        <member name="P:NServiceBus.Router.RouterConfiguration.ImmediateRetries">
+            <summary>
+            Gets or sets the number of immediate retries to use when resolving failures during forwarding.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.RouterConfiguration.DelayedRetries">
+            <summary>
+            Gets or sets the number of delayed retries to use when resolving failures during forwarding.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.RouterConfiguration.CircuitBreakerThreshold">
+            <summary>
+            Gets or sets the number of consecutive failures required to trigger the throttled mode.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.RouterConfiguration.PoisonQueueName">
+            <summary>
+            Gets or sets the name of the poison queue.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.RouterConfiguration.UseRoutingProtocol(NServiceBus.Router.IRoutingProtocol)">
+            <summary>
+            Configures the routing protocol.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.RouterConfiguration.AddRule``1(System.Func{NServiceBus.Router.IRuleCreationContext,``0},System.Func{NServiceBus.Router.IRuleCreationContext,System.Boolean})">
+            <summary>
+            Adds a global (applicable to all interfaces) routing rule.
+            </summary>
+            <typeparam name="T">Type of the rule.</typeparam>
+            <param name="constructor">Delegate that constructs a new instance of the rule.</param>
+            <param name="condition">Condition which must be true for the rule to be added to the chain.</param>
+        </member>
+        <member name="M:NServiceBus.Router.RouterConfiguration.AddModule(NServiceBus.Router.IModule)">
+            <summary>
+            Adds a module.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.RouterConfiguration.EnableFeature(System.Type)">
+            <summary>
+            Adds a feature.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.RouterConfiguration.DefineChain``1(System.Func{NServiceBus.Router.ChainBuilder,NServiceBus.Router.IChain{``0}})">
+            <summary>
+            Defines a custom chain within the router.
+            </summary>
+            <typeparam name="TInput">Input type of the chain.</typeparam>
+            <param name="chainDefinition">Chain definition</param>
+        </member>
+        <member name="T:NServiceBus.Router.RouterMetadata">
+            <summary>
+            Describes the router.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.RouterMetadata.#ctor(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Creates new router metadata object.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.RouterMetadata.Name">
+            <summary>
+            The name of the router.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.RouterMetadata.Interfaces">
+            <summary>
+            The list of router's interfaces.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.RouteTable">
+            <summary>
+            Represents the route table. The routes are prioritized in the registration order i.e. routes registered earlier take precedence over route registered later.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.RouteTable.AddDefaultRoute(System.String,System.String)">
+            <summary>
+            Registers a default route.
+            </summary>
+            <param name="defaultGateway">Default gateway.</param>
+            <param name="defaultGatwayIface">Default gateway's interface.</param>
+        </member>
+        <member name="M:NServiceBus.Router.RouteTable.AddRoute(System.Func{System.String,NServiceBus.Router.Destination,System.Boolean},System.String,System.String,System.String)">
+            <summary>
+            Adds a new route to the table.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.RouteTableExtensions">
+            <summary>
+            Convenient routes
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.RouteTableExtensions.AddForwardRoute(NServiceBus.Router.RouteTable,System.String,System.String,System.String)">
+            <summary>
+            Adds a generic rule to forward all traffic from <paramref name="incomingInterface"/> to <paramref name="outgoingInterface"/> optionally providing the gateway.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.RuntimeTypeGenerator">
+            <summary>
+            Converts type names to type objects.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.RuntimeTypeGenerator.GetType(System.String)">
+            <summary>
+            Returns the type object for a given message type string.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.SendOnlyInterfaceConfiguration`1">
+            <summary>
+            Configures the switch port.
+            </summary>
+            <typeparam name="T">Type of transport.</typeparam>
+        </member>
+        <member name="P:NServiceBus.Router.SendOnlyInterfaceConfiguration`1.Settings">
+            <summary>
+            Interface's extensibility settings.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.SendOnlyInterfaceConfiguration`1.Name">
+            <summary>
+            Name of the interface.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.SendOnlyInterfaceConfiguration`1.RouterConfiguration">
+            <summary>
+            Router's configuration.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SendOnlyInterfaceConfiguration`1.AddRule``1(System.Func{NServiceBus.Router.IRuleCreationContext,``0},System.Func{NServiceBus.Router.IRuleCreationContext,System.Boolean})">
+            <summary>
+            Adds a global (applicable to all interfaces) routing rule.
+            </summary>
+            <typeparam name="TRule">Type of the rule.</typeparam>
+            <param name="constructor">Delegate that constructs a new instance of the rule.</param>
+            <param name="condition">Condition which must be true for the rule to be added to the chain.</param>
+        </member>
+        <member name="M:NServiceBus.Router.SendOnlyInterfaceConfiguration`1.UseSubscriptionPersistence(NServiceBus.Unicast.Subscriptions.MessageDrivenSubscriptions.ISubscriptionStorage)">
+            <summary>
+            Configures the port to use specified subscription persistence.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SendOnlyInterfaceConfiguration`1.OverrideEndpointName(System.String)">
+            <summary>
+            Overrides the interface endpoint name.
+            </summary>
+            <param name="interfaceEndpointName">Endpoint name to use for this interface instead of Router's name</param>
+        </member>
+        <member name="P:NServiceBus.Router.SendOnlyInterfaceConfiguration`1.DistributionPolicy">
+            <summary>
+            Distribution policy of the port.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Router.SendOnlyInterfaceConfiguration`1.EndpointInstances">
+            <summary>
+            Physical routing settings of the port.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.SettingsHolder">
+            <summary>
+            Setting container.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.Get``1(System.String)">
+            <summary>
+            Gets the given setting by key.
+            </summary>
+            <typeparam name="T">The type of the value.</typeparam>
+            <param name="key">The key.</param>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.TryGet``1(``0@)">
+            <summary>
+            Tries to get the given value, key is the type fullname.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <param name="val">The returned value if present.</param>
+            <returns>True if found.</returns>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.TryGet``1(System.String,``0@)">
+            <summary>
+            Tries to get the given value by key.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <param name="key">The key.</param>
+            <param name="val">Value if found.</param>
+            <returns>True if key is found.</returns>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.Get``1">
+            <summary>
+            Gets the given value, key is type fullname.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <returns>The value if found, throws if not.</returns>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.Get(System.String)">
+            <summary>
+            Gets the given value by key.
+            </summary>
+            <param name="key">The key.</param>
+            <returns>The value.</returns>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.GetOrDefault``1">
+            <summary>
+            Gets the setting or default based on the typename.
+            </summary>
+            <typeparam name="T">The setting to get.</typeparam>
+            <returns>The actual value.</returns>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.GetOrDefault``1(System.String)">
+            <summary>
+            Gets the value or its default.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <param name="key">The key.</param>
+            <returns>The value.</returns>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.HasSetting(System.String)">
+            <summary>
+            True if there is a default or explicit value for the given key.
+            </summary>
+            <param name="key">The Key.</param>
+            <returns>True if found.</returns>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.HasSetting``1">
+            <summary>
+            True if there is a setting for the given type.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <returns>True if found.</returns>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.HasExplicitValue(System.String)">
+            <summary>
+            True if there is an explicit value for the given key.
+            </summary>
+            <param name="key">The Key.</param>
+            <returns>True if found.</returns>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.HasExplicitValue``1">
+            <summary>
+            True if there is an explicit value for the given type.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <returns>True if found.</returns>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.GetOrCreate``1">
+            <summary>
+            Gets the requested value, a new one will be created and added if needed.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.Set(System.String,System.Object)">
+            <summary>
+            Sets the setting value.
+            </summary>
+            <param name="key">The key to use to store the setting.</param>
+            <param name="value">The setting value.</param>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.Set``1(System.Object)">
+            <summary>
+            Sets the value.
+            </summary>
+            <typeparam name="T">The type to use as a key for storing the setting.</typeparam>
+            <param name="value">The setting value.</param>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.Set``1(System.Action)">
+            <summary>
+            Sets the given value, key is type fullname.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <param name="value">Action to store.</param>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.SetDefault``1(System.Object)">
+            <summary>
+            Sets the default setting value.
+            </summary>
+            <typeparam name="T">The type to use as a key for storing the setting.</typeparam>
+            <param name="value">The setting value.</param>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.SetDefault``1(System.Action)">
+            <summary>
+            Sets the default value for the given setting.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <param name="value">The value to store as default.</param>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.SetDefault(System.String,System.Object)">
+            <summary>
+            Set the default value for the given key.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.PreventChanges">
+            <summary>
+            Locks the settings to prevent further modifications.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SettingsHolder.Clear">
+            <summary>
+            Clears the settings holder default values and overrides, if a value is disposable the dispose method will be called.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.StaticRoutingProtocolExtensions">
+            <summary>
+            Configures the router to use static routing.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.StaticRoutingProtocolExtensions.UseStaticRoutingProtocol(NServiceBus.Router.RouterConfiguration)">
+            <summary>
+            Configures the router to use static routing.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:NServiceBus.Router.SqlDialect">
+            <summary>
+            Represents a dialect of SQL language.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SqlDialect.ToString">
+            <summary>
+            Gets the name of the SqlDialect.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.SqlDialect.MsSqlServer">
+            <summary>
+            SQL Server dialect
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SqlDialect.MsSqlServer.#ctor">
+            <summary>
+            Microsoft SQL Server
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SqlDialect.MsSqlServer.#ctor(System.String)">
+            <summary>
+            Microsoft SQL Server
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.SqlDialect.MySql">
+            <summary>
+            MySQL dialect
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.SqlDialect.Oracle">
+            <summary>
+            Oracle dialect
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.SqlDialect.PostgreSql">
+            <summary>
+            PostgreSQL dialect
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SqlDialect.PostgreSql.#ctor">
+            <summary>
+            PostgreSQL
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.SqlSubscriptionStorage">
+            <summary>
+            SQL-based subscription persistence.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SqlSubscriptionStorage.#ctor(System.Func{System.Data.Common.DbConnection},System.String,NServiceBus.Router.SqlDialect,System.Nullable{System.TimeSpan})">
+            <summary>
+            Creates new instance of SQL-based subscription persistence.
+            </summary>
+            <param name="connectionBuilder">A func that returns a not-yet-opened connection to the database.</param>
+            <param name="tablePrefix"></param>
+            <param name="sqlDialect"></param>
+            <param name="cacheFor"></param>
+        </member>
+        <member name="M:NServiceBus.Router.SqlSubscriptionStorage.#ctor(System.Func{System.Threading.Tasks.Task{System.Data.Common.DbConnection}},System.String,NServiceBus.Router.SqlDialect,System.Nullable{System.TimeSpan})">
+            <summary>
+            Creates new instance of SQL-based subscription persistence.
+            </summary>
+            <param name="asyncConnectionBuilder">A func that returns an already open connection to the database.</param>
+            <param name="tablePrefix"></param>
+            <param name="sqlDialect"></param>
+            <param name="cacheFor"></param>
+        </member>
+        <member name="M:NServiceBus.Router.SqlSubscriptionStorage.Install">
+            <summary>
+            Creates the required schema objects.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SqlSubscriptionStorage.Uninstall">
+            <summary>
+            Drops the required schema objects.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SqlSubscriptionStorage.Subscribe(NServiceBus.Unicast.Subscriptions.MessageDrivenSubscriptions.Subscriber,NServiceBus.Unicast.Subscriptions.MessageType,NServiceBus.Extensibility.ContextBag)">
+            <summary>
+            Subscribes the given client to messages of a given type.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SqlSubscriptionStorage.Unsubscribe(NServiceBus.Unicast.Subscriptions.MessageDrivenSubscriptions.Subscriber,NServiceBus.Unicast.Subscriptions.MessageType,NServiceBus.Extensibility.ContextBag)">
+            <summary>
+            Unsubscribes the given client from messages of given type.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.SqlSubscriptionStorage.GetSubscriberAddressesForMessage(System.Collections.Generic.IEnumerable{NServiceBus.Unicast.Subscriptions.MessageType},NServiceBus.Extensibility.ContextBag)">
+            <summary>
+            Returns a list of addresses for subscribers currently subscribed to the given message type.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.SubscriptionCommandBuilder">
+            <summary>
+            Not for public use.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.SubscriptionCommands">
+            <summary>
+            Not for public use.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Router.UnforwardableMessageException">
+            <summary>
+            An exception representing an error which causes a message to not be forwardable.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Router.UnforwardableMessageException.#ctor(System.String)">
+            <summary>
+            Creates a new instance.
+            </summary>
+        </member>
+        <member name="M:ReplyTraceRule.UnwrapCorrelationIdAndSetTraceHeader(NServiceBus.Router.BaseForwardRuleContext)">
+            <summary>
+            Invoked when forwarding a message that was sent in context of a message forwarded previously by the Router. Such
+            message contains the TLV-type correlation ID that contains the path of the message. The CorrelationID header
+            need to be re-set and the path is copied to the trace header in order to allow the reply to a reply to be routed.
+            </summary>
+        </member>
+        <member name="M:PipelineExecutionExtensions.CreatePipelineExecutionExpression(NServiceBus.Router.IRule[],System.Collections.Generic.List{System.Linq.Expressions.Expression})">
+            <code>
+            rootContext
+               => behavior1.Invoke(rootContext,
+                  context1 => behavior2.Invoke(context1,
+                   ...
+                     context{N} => behavior{N}.Invoke(context{N},
+                        context{N+1} => TaskEx.Completed))
+            </code>
+        </member>
+        <member name="M:PipelineExecutionExtensions.CreateBehaviorCallDelegate(NServiceBus.Router.IRule,System.Reflection.MethodInfo,System.Linq.Expressions.ParameterExpression,System.Delegate,System.Collections.Generic.List{System.Linq.Expressions.Expression})">
+            <code>
+            context{i} => behavior.Invoke(context{i}, context{i+1} => previous)
+            </code>>
+        </member>
+        <member name="M:PipelineExecutionExtensions.CreateDoneDelegate(System.Type,System.Int32)">
+            <code>
+            context{i} => return TaskEx.CompletedTask;
+            </code>>
+        </member>
+    </members>
+</doc>

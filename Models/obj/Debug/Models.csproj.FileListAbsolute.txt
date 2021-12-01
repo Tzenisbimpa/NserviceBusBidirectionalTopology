@@ -1,0 +1,9 @@
+C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\Models\bin\Debug\Models.dll
+C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\Models\bin\Debug\Models.pdb
+C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\Models\bin\Debug\NServiceBus.Core.dll
+C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\Models\bin\Debug\NServiceBus.Core.xml
+C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\Models\obj\Debug\Models.csproj.AssemblyReference.cache
+C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\Models\obj\Debug\Models.csproj.CopyComplete
+C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\Models\obj\Debug\Models.dll
+C:\Users\Tzenis.Bimpa\source\repos\NserviceBusBiodirectionalTopology\Models\obj\Debug\Models.pdb

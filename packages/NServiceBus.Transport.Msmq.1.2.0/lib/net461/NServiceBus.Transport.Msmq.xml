@@ -1,0 +1,453 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NServiceBus.Transport.Msmq</name>
+    </assembly>
+    <members>
+        <member name="M:NServiceBus.Transport.Msmq.CheckMachineNameForCompliance.Check">
+            <summary>
+            Checks to see if the NetBios computer name exceeds 15 characters and if so throws an exception.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.Transport.Msmq.DelayedDelivery.DueDelayedMessagePoller.AwaitHandleTasks">
+            <summary>
+            This method does not accept a cancellation token because it needs to finish all the tasks that have been started even if cancellation is under way.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Transport.Msmq.HeaderInfo">
+            <summary>
+            Represents the structure of header information passed in a TransportMessage.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Transport.Msmq.HeaderInfo.Key">
+            <summary>
+            The key used to lookup the value in the header collection.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.Transport.Msmq.HeaderInfo.Value">
+            <summary>
+            The value stored under the key in the header collection.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.Transport.Msmq.MessageQueueExtensions">
+            <summary>
+            Reads the Access Control Entries (ACE) from an MSMQ queue.
+            </summary>
+            <remarks>
+            There is no managed API for reading the queue permissions, this has to be done via P/Invoke. by calling
+            <c>MQGetQueueSecurity</c> API.
+            See http://stackoverflow.com/questions/10177255/how-to-get-the-current-permissions-for-an-msmq-private-queue
+            </remarks>
+        </member>
+        <member name="T:NServiceBus.DateTimeOffsetHelper">
+            <summary>
+            Common date time extensions.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.DateTimeOffsetHelper.ToWireFormattedString(System.DateTimeOffset)">
+            <summary>
+            Converts the <see cref="T:System.DateTimeOffset" /> to a <see cref="T:System.String" /> suitable for transport over the wire.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.DateTimeOffsetHelper.ToDateTimeOffset(System.String)">
+            <summary>
+            Converts a wire formatted <see cref="T:System.String" /> from <see cref="M:NServiceBus.DateTimeOffsetHelper.ToWireFormattedString(System.DateTimeOffset)" /> to a UTC
+            <see cref="T:System.DateTimeOffset" />.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.DeadLetterQueueOptionExtensions">
+            <summary>
+            Gives users fine grained control over routing via extension methods.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.DeadLetterQueueOptionExtensions.UseDeadLetterQueue(NServiceBus.Extensibility.ExtendableOptions,System.Boolean)">
+            <summary>
+            Enable or disable MSMQ dead letter queueing.
+            </summary>
+            <param name="options">Option being extended.</param>
+            <param name="enable">Either enable or disabling message dead letter queueing.</param>
+        </member>
+        <member name="T:NServiceBus.DelayedDeliverySettings">
+            <summary>
+            Configures delayed delivery support.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.DelayedDeliverySettings.DelayedMessageStore">
+            <summary>
+            The store to keep delayed messages.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.DelayedDeliverySettings.NumberOfRetries">
+            <summary>
+            Number of retries when trying to forward due delayed messages.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.DelayedDeliverySettings.TimeToTriggerStoreCircuitBreaker">
+            <summary>
+            Time to wait before triggering the circuit breaker that monitors the storing of delayed messages in the database. Defaults to 30 seconds.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.DelayedDeliverySettings.TimeToTriggerFetchCircuitBreaker">
+            <summary>
+            Time to wait before triggering the circuit breaker that monitors the fetching of due delayed messages from the database. Defaults to 30 seconds.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.DelayedDeliverySettings.TimeToTriggerDispatchCircuitBreaker">
+            <summary>
+            Time to wait before triggering the circuit breaker that monitors the dispatching of due delayed messages to the destination. Defaults to 30 seconds.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.DelayedDeliverySettings.MaximumRecoveryFailuresPerSecond">
+            <summary>
+            Maximum number of recovery failures per second that triggers the recovery circuit breaker. Recovery attempts are attempts to increment the failure
+            counter after a failed dispatch and forwarding messages to the error queue. Defaults to 1/s.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.DelayedMessage">
+            <summary>
+            Represents a delayed message.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.DelayedMessage.Time">
+            <summary>
+            Date and time the message is due.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.DelayedMessage.MessageId">
+            <summary>
+            Native message ID
+            </summary>
+        </member>
+        <member name="P:NServiceBus.DelayedMessage.Body">
+            <summary>
+            The body of the message.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.DelayedMessage.Headers">
+            <summary>
+            The serialized headers of the message
+            </summary>
+        </member>
+        <member name="P:NServiceBus.DelayedMessage.Destination">
+            <summary>
+            The address of the destination queue
+            </summary>
+        </member>
+        <member name="P:NServiceBus.DelayedMessage.NumberOfRetries">
+            <summary>
+            The number of attempt already made to forward the message to its destination.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.IDelayedMessageStore">
+            <summary>
+            Represents a store for delayed messages.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.IDelayedMessageStore.Initialize(System.String,NServiceBus.TransportTransactionMode,System.Threading.CancellationToken)">
+            <summary>
+            Initializes the storage e.g. creates required database artifacts etc.
+            </summary>
+            <param name="endpointName">Name of the endpoint that hosts the delayed delivery storage.</param>
+            <param name="transactionMode">The transaction mode selected for the transport. The storage implementation should throw an exception if it can't support specified
+            transaction mode e.g. TransactionScope mode requires the storage to enlist in a distributed transaction managed by the DTC.</param>
+            <param name="cancellationToken">The cancellation token set if the endpoint begins to shut down while the Initialize method is executing.</param>
+        </member>
+        <member name="M:NServiceBus.IDelayedMessageStore.Next(System.Threading.CancellationToken)">
+            <summary>
+            Returns the date and time set for the next delayed message to become due or null if there are no delayed messages stored.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NServiceBus.IDelayedMessageStore.Store(NServiceBus.DelayedMessage,System.Threading.CancellationToken)">
+            <summary>
+            Stores a delayed message.
+            </summary>
+            <param name="entity">Object representing a delayed message.</param>
+            <param name="cancellationToken">The cancellation token for cooperative cancellation</param>
+        </member>
+        <member name="M:NServiceBus.IDelayedMessageStore.Remove(NServiceBus.DelayedMessage,System.Threading.CancellationToken)">
+            <summary>
+            Removes a due delayed message that has been dispatched to its destination from the store.
+            </summary>
+            <param name="entity">Object representing a delayed message previously returned by FetchNextDueTimeout.</param>
+            <param name="cancellationToken">The cancellation token for cooperative cancellation</param>
+            <returns>True if the removal succeeded. False if there was nothing to remove because the delayed message was already gone.</returns>
+        </member>
+        <member name="M:NServiceBus.IDelayedMessageStore.IncrementFailureCount(NServiceBus.DelayedMessage,System.Threading.CancellationToken)">
+            <summary>
+            Increments the counter of failures for a given due delayed message.
+            </summary>
+            <param name="entity">Object representing a delayed message previously returned by FetchNextDueTimeout.</param>
+            <param name="cancellationToken">The cancellation token for cooperative cancellation</param>
+            <returns>True if the increment succeeded. False if the delayed message was already gone.</returns>
+        </member>
+        <member name="M:NServiceBus.IDelayedMessageStore.FetchNextDueTimeout(System.DateTimeOffset,System.Threading.CancellationToken)">
+            <summary>
+            Retrieves the oldest due delayed message from the store or returns null if there is no due delayed messages.
+            </summary>
+            <param name="at">The point in time to which to compare the due date of the messages.</param>
+            <param name="cancellationToken">The cancellation token for cooperative cancellation</param>
+        </member>
+        <member name="T:NServiceBus.CreateSqlConnection">
+            <summary>
+            Factory method for creating SQL Server connections.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.SqlServerDelayedMessageStore">
+            <summary>
+            Implementation of the delayed message store based on the SQL Server.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.SqlServerDelayedMessageStore.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Creates a new instance of the SQL Server delayed message store.
+            </summary>
+            <param name="connectionString">Connection string to the SQL Server database.</param>
+            <param name="schema">(optional) schema to use. Defaults to dbo</param>
+            <param name="tableName">(optional) name of the table where delayed messages are stored. Defaults to name of the endpoint with .Delayed suffix.</param>
+        </member>
+        <member name="M:NServiceBus.SqlServerDelayedMessageStore.#ctor(NServiceBus.CreateSqlConnection,System.String,System.String)">
+            <summary>
+            Creates a new instance of the SQL Server delayed message store.
+            </summary>
+            <param name="connectionFactory">Factory for database connections.</param>
+            <param name="schema">(optional) schema to use. Defaults to dbo</param>
+            <param name="tableName">(optional) name of the table where delayed messages are stored. Defaults to name of the endpoint with .Delayed suffix.</param>
+        </member>
+        <member name="M:NServiceBus.SqlServerDelayedMessageStore.Store(NServiceBus.DelayedMessage,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:NServiceBus.SqlServerDelayedMessageStore.Remove(NServiceBus.DelayedMessage,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:NServiceBus.SqlServerDelayedMessageStore.IncrementFailureCount(NServiceBus.DelayedMessage,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:NServiceBus.SqlServerDelayedMessageStore.Initialize(System.String,NServiceBus.TransportTransactionMode,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:NServiceBus.SqlServerDelayedMessageStore.Next(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:NServiceBus.SqlServerDelayedMessageStore.FetchNextDueTimeout(System.DateTimeOffset,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:NServiceBus.EndpointInstanceExtensions">
+            <summary>
+            Provides MSMQ-specific extensions to routing.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.EndpointInstanceExtensions.AtMachine(NServiceBus.Routing.EndpointInstance,System.String)">
+            <summary>
+            Returns an endpoint instance bound to a given machine name.
+            </summary>
+            <param name="instance">A plain instance.</param>
+            <param name="machineName">Machine name.</param>
+        </member>
+        <member name="T:NServiceBus.InstanceMappingFileSettings">
+            <summary>
+            Allows configuring file-based instance mappings.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.InstanceMappingFileSettings.#ctor(NServiceBus.Settings.SettingsHolder)">
+            <summary>
+            Creates new instance of <see cref="T:NServiceBus.InstanceMappingFileSettings"/>.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.InstanceMappingFileSettings.RefreshInterval(System.TimeSpan)">
+            <summary>
+            Specifies the interval between data refresh attempts.
+            The default value is 30 seconds.
+            </summary>
+            <param name="refreshInterval">Refresh interval. Valid values must be between 1 second and less than 1 day.</param>
+        </member>
+        <member name="M:NServiceBus.InstanceMappingFileSettings.FilePath(System.String)">
+            <summary>
+            Specifies the path and file name for the instance mapping XML. The default is <code>instance-mapping.xml</code>.
+            </summary>
+            <param name="filePath">The relative or absolute file path to the instance mapping XML file.</param>
+        </member>
+        <member name="M:NServiceBus.InstanceMappingFileSettings.Path(System.Uri)">
+            <summary>
+            Specifies the uri for the instance mapping XML.
+            </summary>
+            <param name="uriPath">The absolute uri to the instance mapping XML.</param>
+        </member>
+        <member name="M:NServiceBus.InstanceMappingFileSettings.EnforceStrictSchemaValidation">
+            <summary>
+            Turns on strict schema validation for the instance mapping XML.
+            Unknown attribtutes will trigger a schema validation exception.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.JournalOptionExtensions">
+            <summary>
+            Gives users fine grained control over routing via extension methods.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.JournalOptionExtensions.UseJournalQueue(NServiceBus.Extensibility.ExtendableOptions,System.Boolean)">
+            <summary>
+            Enable or disable MSMQ journaling.
+            </summary>
+            <param name="options">Option being extended.</param>
+            <param name="enable">Either enable or disabling message journaling.</param>
+        </member>
+        <member name="T:NServiceBus.MsmqConfigurationExtensions">
+            <summary>
+            Adds extensions methods to <see cref="T:NServiceBus.TransportExtensions`1" /> for configuration purposes.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.MsmqConfigurationExtensions.ApplyLabelToMessages(NServiceBus.TransportExtensions{NServiceBus.MsmqTransport},System.Func{System.Collections.Generic.IReadOnlyDictionary{System.String,System.String},System.String})">
+            <summary>
+            Set a delegate to use for applying the <see cref="P:System.Messaging.Message.Label" /> property when sending a message.
+            </summary>
+            <remarks>
+            This delegate will be used for all valid messages sent via MSMQ.
+            This includes, not just standard messages, but also Audits, Errors and all control messages.
+            In some cases it may be useful to use the <see cref="F:NServiceBus.Headers.ControlMessageHeader" /> key to determine if a message is
+            a control message.
+            The only exception to this rule is received messages with corrupted headers. These messages will be forwarded to the
+            error queue with no label applied.
+            </remarks>
+        </member>
+        <member name="M:NServiceBus.MsmqConfigurationExtensions.TransactionScopeOptions(NServiceBus.TransportExtensions{NServiceBus.MsmqTransport},System.Nullable{System.TimeSpan},System.Nullable{System.Transactions.IsolationLevel})">
+            <summary>
+            Allows to change the transaction isolation level and timeout for the `TransactionScope` used to receive messages.
+            </summary>
+            <remarks>
+            If not specified the default transaction timeout of the machine will be used and the isolation level will be set to
+            <see cref="F:System.Transactions.IsolationLevel.ReadCommitted"/>.
+            </remarks>
+            <param name="transportExtensions">MSMQ Transport configuration object.</param>
+            <param name="timeout">Transaction timeout duration.</param>
+            <param name="isolationLevel">Transaction isolation level.</param>
+        </member>
+        <member name="M:NServiceBus.MsmqConfigurationExtensions.SetMessageDistributionStrategy(NServiceBus.RoutingSettings{NServiceBus.MsmqTransport},NServiceBus.Routing.DistributionStrategy)">
+            <summary>
+            Sets a distribution strategy for a given endpoint.
+            </summary>
+            <param name="config">MSMQ Transport configuration object.</param>
+            <param name="distributionStrategy">The instance of a distribution strategy.</param>
+        </member>
+        <member name="M:NServiceBus.MsmqConfigurationExtensions.InstanceMappingFile(NServiceBus.RoutingSettings{NServiceBus.MsmqTransport})">
+            <summary>
+            Returns the configuration options for the file based instance mapping file.
+            </summary>
+            <param name="config">MSMQ Transport configuration object.</param>
+        </member>
+        <member name="M:NServiceBus.MsmqConfigurationExtensions.UseDeadLetterQueueForMessagesWithTimeToBeReceived(NServiceBus.TransportExtensions{NServiceBus.MsmqTransport})">
+            <summary>
+            Moves messages that have exceeded their TimeToBeReceived to the dead letter queue instead of discarding them.
+            </summary>
+            <param name="config">MSMQ Transport configuration object.</param>
+        </member>
+        <member name="M:NServiceBus.MsmqConfigurationExtensions.DisableInstaller(NServiceBus.TransportExtensions{NServiceBus.MsmqTransport})">
+            <summary>
+            Disables the automatic queue creation when installers are enabled using `EndpointConfiguration.EnableInstallers()`.
+            </summary>
+            <remarks>
+            With installers enabled, required queues will be created automatically at startup.While this may be convenient for development,
+            we instead recommend that queues are created as part of deployment using the CreateQueues.ps1 script included in the NuGet package.
+            The installers might still need to be enabled to fulfill the installation needs of other components, but this method allows
+            scripts to be used for queue creation instead.
+            </remarks>
+            <param name="config">MSMQ Transport configuration object.</param>
+        </member>
+        <member name="M:NServiceBus.MsmqConfigurationExtensions.DisableDeadLetterQueueing(NServiceBus.TransportExtensions{NServiceBus.MsmqTransport})">
+            <summary>
+            This setting should be used with caution. It disables the storing of undeliverable messages
+            in the dead letter queue. Therefore this setting must only be used where loss of messages 
+            is an acceptable scenario. 
+            </summary>
+            <param name="config">MSMQ Transport configuration object.</param>
+        </member>
+        <member name="M:NServiceBus.MsmqConfigurationExtensions.DisableConnectionCachingForSends(NServiceBus.TransportExtensions{NServiceBus.MsmqTransport})">
+            <summary>
+            Instructs MSMQ to cache connections to a remote queue and re-use them
+            as needed instead of creating new connections for each message. 
+            Turning connection caching off will negatively impact the message throughput in 
+            most scenarios.
+            </summary>
+            <param name="config">MSMQ Transport configuration object.</param>
+        </member>
+        <member name="M:NServiceBus.MsmqConfigurationExtensions.UseNonTransactionalQueues(NServiceBus.TransportExtensions{NServiceBus.MsmqTransport})">
+            <summary>
+            This setting should be used with caution. As the queues are not transactional, any message that has
+            an exception during processing will not be rolled back to the queue. Therefore this setting must only
+            be used where loss of messages is an acceptable scenario.  
+            </summary>
+            <param name="config">MSMQ Transport configuration object.</param>
+        </member>
+        <member name="M:NServiceBus.MsmqConfigurationExtensions.EnableJournaling(NServiceBus.TransportExtensions{NServiceBus.MsmqTransport})">
+            <summary>
+            Enables the use of journaling messages. Stores a copy of every message received in the journal queue. 
+            Should be used ONLY when debugging as it can 
+            potentially use up the MSMQ journal storage quota based on the message volume.
+            </summary>
+            <param name="config">MSMQ Transport configuration object.</param>
+        </member>
+        <member name="M:NServiceBus.MsmqConfigurationExtensions.TimeToReachQueue(NServiceBus.TransportExtensions{NServiceBus.MsmqTransport},System.TimeSpan)">
+            <summary>
+            Overrides the Time-To-Reach-Queue (TTRQ) timespan. The default value if not set is Message.InfiniteTimeout
+            </summary>
+            <param name="config">MSMQ Transport configuration object.</param>
+            <param name="timeToReachQueue">Timespan for the Time-To-Reach-Queue (TTRQ)</param>
+        </member>
+        <member name="M:NServiceBus.MsmqConfigurationExtensions.DisableNativeTimeToBeReceivedInTransactions(NServiceBus.TransportExtensions{NServiceBus.MsmqTransport})">
+            <summary>
+            Disables native Time-To-Be-Received (TTBR) when combined with transactions.
+            </summary>
+            <param name="config">MSMQ Transport configuration object.</param>
+        </member>
+        <member name="M:NServiceBus.MsmqConfigurationExtensions.IgnoreIncomingTimeToBeReceivedHeaders(NServiceBus.TransportExtensions{NServiceBus.MsmqTransport})">
+            <summary>
+            Ignore incoming Time-To-Be-Received (TTBR) headers. By default an expired TTBR header will result in the message to be discarded.
+            </summary>
+            <param name="config">MSMQ Transport configuration object.</param>
+        </member>
+        <member name="M:NServiceBus.MsmqConfigurationExtensions.NativeDelayedDelivery(NServiceBus.TransportExtensions{NServiceBus.MsmqTransport},NServiceBus.IDelayedMessageStore)">
+            <summary>
+            Configures native delayed delivery.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.MsmqTransport">
+            <summary>
+            Transport definition for MSMQ.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.MsmqTransport.ExampleConnectionStringForErrorMessage">
+            <summary>
+            <see cref="P:NServiceBus.Transport.TransportDefinition.ExampleConnectionStringForErrorMessage" />.
+            </summary>
+        </member>
+        <member name="P:NServiceBus.MsmqTransport.RequiresConnectionString">
+            <summary>
+            <see cref="P:NServiceBus.Transport.TransportDefinition.RequiresConnectionString" />.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.MsmqTransport.Initialize(NServiceBus.Settings.SettingsHolder,System.String)">
+            <summary>
+            Initializes the transport infrastructure for msmq.
+            </summary>
+            <param name="settings">The settings.</param>
+            <param name="connectionString">The connection string.</param>
+            <returns>the transport infrastructure for msmq.</returns>
+        </member>
+        <member name="T:NServiceBus.MsmqPersistence">
+            <summary>
+            Used to enable Msmq persistence.
+            </summary>
+        </member>
+        <member name="T:NServiceBus.MsmqSubscriptionStorageConfigurationExtensions">
+            <summary>
+            Provides configuration extensions when using <see cref="T:NServiceBus.MsmqPersistence"/>.
+            </summary>
+        </member>
+        <member name="M:NServiceBus.MsmqSubscriptionStorageConfigurationExtensions.SubscriptionQueue(NServiceBus.PersistenceExtensions{NServiceBus.MsmqPersistence},System.String)">
+            <summary>
+            Configures the queue used to store subscriptions.
+            </summary>
+            <param name="persistenceExtensions">The settings to extend.</param>
+            <param name="queue">The queue name.</param>
+        </member>
+    </members>
+</doc>
